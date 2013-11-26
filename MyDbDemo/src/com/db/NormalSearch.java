@@ -1,33 +1,34 @@
 package com.db;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
-public class AdvancedSearch {
+public class NormalSearch{
 	private String title,
-	               author,
-	               classification,
-	               keywords;
-	
-	private Statement stmt;
+                   classification,
+                   keywords;
 	
 	private Connection conn;
-	
+
+	private Statement stmt;
+
 	public BookInformation[] bi;
-	
+
 	private int index;
-	
+
 	private ArrayList<String> al;
-	
+
 	private PriorityQueue<BookInformation> pq;
 	
-	public AdvancedSearch(String title, String author, String classification, String keywords)
+	public NormalSearch(String wordsforsearching)
 	{
-		this.title = title;
-		this.author = author;
-		this.classification = classification;
-		this.keywords = keywords;
+		title = wordsforsearching;
+	    classification = wordsforsearching;
+		keywords = wordsforsearching;
 		bi = new BookInformation[100];
 		al = new ArrayList<String>(100);
 		pq = new PriorityQueue<BookInformation>(100);
@@ -59,13 +60,6 @@ public class AdvancedSearch {
 		executeSQL("SELECT ITEM_ID, TITLE FROM LIBRARY_CATEGORY WHERE CLASSIFICATION LIKE '%" + classification + "%'");
 		
 		executeSQL("(SELECT ITEM_ID, TITLE "
-				 + "FROM AUTHOR NATURAL JOIN LIBRARY_CATEGORY "
-				 + "WHERE FIRST_NAME LIKE '%" + author + "%'" + " OR LAST_NAME LIKE '%" + author + "%'" +") "
-				 + "UNION (SELECT ITEM_ID, TITLE "
-				 + "FROM JOURNAL_ARTICLE_AUTHOR NATURAL JOIN LIBRARY_CATEGORY "
-				 + "WHERE FIRST_NAME LIKE '%" + author + "%'" + " OR LAST_NAME LIKE '%" + author + "%'" +") ");
-		
-		executeSQL("(SELECT ITEM_ID, TITLE "
 				 + "FROM BOOK NATURAL JOIN LIBRARY_CATEGORY "
 				 + "WHERE KEY_WORD LIKE '%" + keywords + "%'" +") "
 				 + "UNION (SELECT ITEM_ID, TITLE "
@@ -79,7 +73,7 @@ public class AdvancedSearch {
 				 + "WHERE KEYWORD LIKE '%" + keywords + "%'" +") ");
 		
 		sort();
-
+		
 		try
 		{
 			stmt.close();
@@ -124,50 +118,5 @@ public class AdvancedSearch {
 	public int getResultNumber()
 	{
 		return index;
-	}
-}
-
-class BookInformation implements Comparable<BookInformation>
-{
-	private String title,
-	               id;
-	
-	private int matches;
-    
-	public BookInformation(String title, String id)
-	{
-		this.title = title;
-		this.id = id;
-		matches = 1;
-	}
-	
-	public int getMatches()
-	{
-		return matches;
-	}
-	
-	public void increaseMatches()
-	{
-		matches++;
-	}
-	
-	public int compareTo(BookInformation bi)
-	{
-		if(this.matches>bi.matches)
-			return -1;
-		else if(this.matches==bi.matches)
-			return 0;
-		else
-			return 1;
-	}
-	
-	public String getTitle()
-	{
-		return title;
-	}
-	
-	public String getID()
-	{
-		return id;
-	}
+	}	
 }

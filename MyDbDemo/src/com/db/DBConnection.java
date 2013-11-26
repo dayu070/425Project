@@ -51,11 +51,13 @@ public class DBConnection {
 		try
 		{
 			Statement stmt = conn.createStatement(); // create Statement object
-			ResultSet rset = stmt.executeQuery("SELECT ANAME "
-					+ "FROM ANIMAL");
+			ResultSet rset = stmt.executeQuery("SELECT COUNT (WEIGHT) "
+					                         + "FROM ANIMAL "
+					                         + "WHERE WEIGHT=10");
+			
 			while (rset.next())
 			{
-				System.out.println(rset.getString(1));
+				System.out.println(Integer.parseInt(rset.getString(1))==2);
 			}
 			stmt.close(); // close Statement and release resources
 			conn.close(); // close Connection and release resources		
