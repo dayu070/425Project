@@ -127,6 +127,7 @@ public class SearchResultFrame extends JFrame implements ActionListener {
 				if(e.getSource() == getDetails[i])
 				{
 					new DetailedInformationFrame(user, results[2*i], results[2*i+1]);
+					System.out.println(results[2*i] + results[2*i+1]);
 					return;
 				}
 				else if (e.getSource() == borrow[i])

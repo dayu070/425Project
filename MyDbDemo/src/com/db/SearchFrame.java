@@ -20,6 +20,7 @@ public class SearchFrame extends JFrame implements ActionListener {
 	{
 		super("SEARCH");
 		this.setLayout(new FlowLayout());
+		this.user = user;
 		lbWelcome = new JLabel("Hello, " + user);
 		this.add(lbWelcome);
 		this.add(lbSearch);
