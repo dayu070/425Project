@@ -49,7 +49,7 @@ public class DetailedInformationFrame extends JFrame implements ActionListener {
 			this.add(new JLabel(getDetails.details[9]));
 			this.add(btReturn);
 			this.add(new JLabel(" "));
-			this.setSize(1200, 120);
+			this.setSize(600, 600);
 			GUIUtil.toCenter(this);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);
@@ -81,7 +81,7 @@ public class DetailedInformationFrame extends JFrame implements ActionListener {
 			this.add(new JLabel(getDetails.details[8]));
 			this.add(btReturn);
 			this.add(new JLabel(" "));
-			this.setSize(1100, 120);
+			this.setSize(600, 550);
 			GUIUtil.toCenter(this);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);
@@ -113,7 +113,7 @@ public class DetailedInformationFrame extends JFrame implements ActionListener {
 			this.add(new JLabel(getDetails.details[8]));
 			this.add(btReturn);
 			this.add(new JLabel(" "));
-			this.setSize(1100, 120);
+			this.setSize(600, 550);
 			GUIUtil.toCenter(this);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);
@@ -145,7 +145,7 @@ public class DetailedInformationFrame extends JFrame implements ActionListener {
 			this.add(new JLabel(getDetails.details[8]));
 			this.add(btReturn);
 			this.add(new JLabel(" "));
-			this.setSize(1100, 120);
+			this.setSize(600, 550);
 			GUIUtil.toCenter(this);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);
@@ -173,7 +173,7 @@ public class DetailedInformationFrame extends JFrame implements ActionListener {
 			this.add(new JLabel(getDetails.details[6]));
 			this.add(btReturn);
 			this.add(new JLabel(" "));
-			this.setSize(900, 120);
+			this.setSize(600, 450);
 			GUIUtil.toCenter(this);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);

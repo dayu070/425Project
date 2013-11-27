@@ -21,11 +21,12 @@ public class SearchFrame extends JFrame implements ActionListener {
 		super("SEARCH");
 		this.setLayout(new FlowLayout());
 		lbWelcome = new JLabel("Hello, " + user);
+		this.add(lbWelcome);
 		this.add(lbSearch);
 		this.add(tfWords);
 		this.add(btSearch);
 		this.add(btAdSearch);
-		this.setSize(500, 150);
+		this.setSize(400, 150);
 		GUIUtil.toCenter(this);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -39,7 +40,7 @@ public class SearchFrame extends JFrame implements ActionListener {
 		if(e.getSource() == btSearch)
 		{
 			this.dispose();
-			System.out.println("Succeed to search.");
+			new SearchResultFrame(tfWords.getText(), user);
 		}
 		else
 		{

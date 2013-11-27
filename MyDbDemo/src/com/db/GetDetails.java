@@ -6,15 +6,11 @@ public class GetDetails {
 	private String itemID;
 				   
 	public String[] details;
-	
-	private Connection conn;
-	
-	private Statement stmt;
-	
+
 	public GetDetails(String itemID)
 	{
 		this.itemID = itemID;
-		try
+/*		try
 		{
 			conn = DBConnection.GetConnection();
 			stmt = conn.createStatement();
@@ -24,7 +20,7 @@ public class GetDetails {
 		}catch (SQLException e)
 		{
 			e.printStackTrace();
-		}
+		}*/
 		if(itemID.charAt(0) == 'B')
 		{
 			details = new String[10];
@@ -46,14 +42,7 @@ public class GetDetails {
 			details = new String[7];
 			getDetailsForJournal();
 		}
-		try
-		{
-			stmt.close();
-			DBConnection.Close(conn);
-		}catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
+		
 	}
 	
 	public void getDetailsForBook()
@@ -95,12 +84,22 @@ public class GetDetails {
 	{
 		try
 		{
+			Connection conn = DBConnection.GetConnection();
+			Statement stmt = conn.createStatement();
+			
 			ResultSet rset = stmt.executeQuery(sql);
-			for (int i=0; i<details.length;i++)
+			while(rset.next())
 			{
-				details[i] = rset.getString(i+1);
+				for (int i=0; i<details.length;i++)
+				{
+					details[i] = rset.getString(i+1);
+				}
 			}
+			stmt.close();
 		}catch (SQLException e)
+		{
+			e.printStackTrace();
+		}catch (ClassNotFoundException e)
 		{
 			e.printStackTrace();
 		}

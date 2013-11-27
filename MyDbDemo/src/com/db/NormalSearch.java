@@ -12,10 +12,6 @@ public class NormalSearch{
                    classification,
                    keywords;
 	
-	private Connection conn;
-
-	private Statement stmt;
-
 	public BookInformation[] bi;
 
 	private int index;
@@ -34,18 +30,7 @@ public class NormalSearch{
 		pq = new PriorityQueue<BookInformation>(100);
 		index = 0;
 		
-		try
-		{
-			conn = DBConnection.GetConnection();
-			stmt = conn.createStatement();
-			getResult();
-		}catch (ClassNotFoundException e)
-		{
-			e.printStackTrace();
-		}catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
+		getResult();
 	}
 	
 	public void getResult()
@@ -74,20 +59,22 @@ public class NormalSearch{
 		
 		sort();
 		
-		try
+		/*try
 		{
 			stmt.close();
 			DBConnection.Close(conn);
 		}catch (SQLException e)
 		{
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	private void executeSQL(String sql)
 	{
 		try
 		{
+			Connection conn = DBConnection.GetConnection();
+			Statement stmt = conn.createStatement();
 			ResultSet rset = stmt.executeQuery(sql);
 			while(rset.next())
 			{
@@ -101,22 +88,36 @@ public class NormalSearch{
 					bi[index++] = new BookInformation(rset.getString(1), rset.getString(2));
 				}
 			}
+			stmt.close();
 		}catch (SQLException e)
 		{
 			e.printStackTrace();
+		}catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
 		}
+		
 	}
 	
 	private void sort()
 	{
-		for (BookInformation b : bi)
-			pq.add(b);
-		for (int i = 0; i < index; i++)
-			bi[i++] = pq.poll();
+		for (int i = 1; i < index; i++)
+			for (int k = i; k > 0 && bi [k -1].compareTo(bi [k])>0 ; k--)
+				AdvancedSearch.swap (bi, k, k -1);
 	}
 	
 	public int getResultNumber()
 	{
 		return index;
 	}	
+	
+	public static void main(String args[]){
+		NormalSearch ns = new NormalSearch("Computer");
+		System.out.println(ns.index);
+		for (int i=0; i<ns.index;i++)
+		{
+			System.out.println(ns.bi[i].getTitle());
+			//System.out.println(as.al.get(i));
+		}
+	}
 }

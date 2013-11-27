@@ -55,7 +55,7 @@ public class SearchResultFrame extends JFrame implements ActionListener {
 		this.add(new JLabel(" "));
 		this.add(new JLabel(" "));
 		this.add(new JLabel(" "));
-		this.setSize(100*(numberOfResults+2), 200);
+		this.setSize(800, 50*(numberOfResults+2));
 		GUIUtil.toCenter(this);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -82,12 +82,15 @@ public class SearchResultFrame extends JFrame implements ActionListener {
 		resultsArray = new JLabel[2*numberOfResults];
 		getDetails = new JButton[numberOfResults];
 		borrow = new JButton[numberOfResults];
+		results = new String[2*numberOfResults];
 		for (int i=0;i<numberOfResults;i++)
 		{
 			resultsArray[2*i] = new JLabel(normalSearch.bi[i].getID());
 			resultsArray[2*i+1] = new JLabel(normalSearch.bi[i].getTitle());
 			getDetails[i] = new JButton("MORE DETAILS");
 			borrow[i] = new JButton("BORROW IT!");
+			results[2*i] = normalSearch.bi[i].getID();
+			results[2*i+1] = normalSearch.bi[i].getTitle();
 			this.add(resultsArray[2*i]);
 			this.add(resultsArray[2*i+1]);
 			this.add(getDetails[i]);
@@ -97,7 +100,7 @@ public class SearchResultFrame extends JFrame implements ActionListener {
 		this.add(new JLabel(" "));
 		this.add(new JLabel(" "));
 		this.add(new JLabel(" "));
-		this.setSize(100*(numberOfResults+2), 200);
+		this.setSize(800, 50*(numberOfResults+2));
 		GUIUtil.toCenter(this);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);

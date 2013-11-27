@@ -49,8 +49,8 @@ public class AdvancedSearchFrame extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		if (e.getSource() == btSearch)
 		{
-			System.out.println("Search successfully!");
 			this.dispose();
+			new SearchResultFrame(tfTitle.getText(), tfAuthor.getText(), tfClassification.getText(), tfKeyword.getText(), user);
 		}
 		else
 		{
