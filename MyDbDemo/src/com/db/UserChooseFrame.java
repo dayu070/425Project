@@ -32,6 +32,10 @@ public class UserChooseFrame extends JFrame implements ActionListener {
 		{
 			this.dispose();
 			new MemberLogInFrame();
+		}else if(e.getSource() == btLibrarian){
+			this.dispose();
+			new LibraryLogInFrame();
+			
 		}else
 		{
 			this.dispose();
