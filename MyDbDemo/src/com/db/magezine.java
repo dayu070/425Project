@@ -6,15 +6,15 @@ public class magezine {
 		
 	}
 	
-	public void adding(String item_id, String publisher, String editor, String title, String classification, String position, double edition, String contributor,int magazine_year){
+	public void adding(String item_id, String publisher, String editor, String title, String classification, String position, String first, String middle, String last, String edition, String contributor,String magazine_year){
 		try
 		{	
 			Connection conn = DBConnection.GetConnection();
 			Statement stmt = conn.createStatement();
-			stmt.executeQuery("INSERT INTO LIBRARY_CATEGORY"
-							+ "VALUE('"+ item_id+"','"+publisher+"','"+editor+"','"+title+"','"+classification+"','"+position+"'");
-			stmt.executeQuery("INSERT INTO MANAZINE"
-							+ "VALUE('" + item_id +"',"+edition+",'"+contributor+"',"+magazine_year);	
+			stmt.executeQuery("INSERT INTO LIBRARY_CATEGORY VALUES('" + item_id + "','" + publisher + "','" + editor + "','" + title+ "','" + classification + "','" + position + "')");
+			stmt.executeQuery("INSERT INTO AUTHOR VALUES('" + item_id + "','" + first + "','" + middle + "','" + last + "')");
+			stmt.executeQuery("INSERT INTO MAGAZINE VALUES('" + item_id + "'," + edition + ",'" + contributor + "'," + magazine_year + ")");	
+
 		}catch (SQLException e)
 		{
 			e.printStackTrace();

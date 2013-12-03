@@ -149,36 +149,6 @@ public class AdvancedSearch {
 	{
 		return index;
 	}
-	
-	public static void main(String args[]){
-		AdvancedSearch as = new AdvancedSearch("", "", "a", "");
-		System.out.println(as.index);
-		for (int i=0; i<as.index;i++)
-		{
-			System.out.println(as.bi[i].getTitle());
-			//System.out.println(as.al.get(i));
-		}
-//		try
-//		{
-//			Connection conn = DBConnection.GetConnection();
-//			Statement stmt = conn.createStatement();
-//			ResultSet rset = stmt.executeQuery("(SELECT ITEM_ID, TITLE "
-//					+  "FROM LIBRARY_CATEGORY "
-//					+  "WHERE TITLE LIKE '%a%') "
-//					+  "UNION (SELECT ITEM_ID, TITLE "
-//					+  "FROM LIBRARY_CATEGORY NATURAL JOIN JOURNAL_ARTICLE "
-//					+  "WHERE ARTICLE_TITLE LIKE '%a%') ");
-//			while(rset.next())
-//			System.out.println(rset.getString(1));
-//		}catch(ClassNotFoundException e)
-//		{
-//			e.printStackTrace();
-//		}catch (SQLException e)
-//		{
-//			e.printStackTrace();
-//		}
-		
-	}
 }
 
 class BookInformation implements Comparable<BookInformation>

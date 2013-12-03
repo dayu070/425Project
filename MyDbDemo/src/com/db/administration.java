@@ -32,7 +32,7 @@ public class administration {
 			Connection conn = DBConnection.GetConnection();
 			Statement stmt = conn.createStatement();
 			stmt.executeQuery("DELETE FROM LIBRARY_CATEGORY "
-							+ "WHERE ITEM_ID = "+itemID);	
+							+ "WHERE ITEM_ID = '" + itemID + "'");	
 			
 		}catch (SQLException e)
 		{
@@ -43,10 +43,6 @@ public class administration {
 	}	
 	}
 	
-	public void notifying(){
-		
-		
-	}
 	//method for adding copies	
 	public void addingCopy(){
 		try

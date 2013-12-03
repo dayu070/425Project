@@ -9,14 +9,15 @@ public class techReport {
 	public techReport(){
 
 	}
-	public void adding(String item_id, String publisher, String editor, String title, String classification, String position, String keyword, Date report_date){
+	public void adding(String item_id, String publisher, String editor, String title, String classification, String position, String first, String middle, String last, String keyword, String report_date){
 		try
 		{	Connection conn = DBConnection.GetConnection();
 		Statement stmt = conn.createStatement();
-			stmt.executeQuery("INSERT INTO LIBRARY_CATEGORY"
-							+ "VALUE('"+ item_id+"','"+publisher+"','"+editor+"','"+title+"','"+classification+"','"+position+"'");
-			stmt.executeQuery("INSERT INTO TECHNICAL_REPORT"
-							+ "VALUE('" + item_id +"','"+keyword+"',"+report_date);	
+		stmt.executeQuery("INSERT INTO LIBRARY_CATEGORY "
+				+ "VALUES('" + item_id + "','" + publisher + "','" + editor + "','" + title + "','" + classification + "','" + position + "')");
+		stmt.executeQuery("INSERT INTO AUTHOR VALUES('" + item_id + "','" + first + "','" + middle + "','" + last +"')");
+		stmt.executeQuery("INSERT INTO TECHNICAL_REPORT VALUES('" + item_id + "','" + keyword + "',TO_DATE('" + report_date + "','YYYY-MM-DD HH24:MI:SS'))");
+
 		}catch (SQLException e)
 		{
 			e.printStackTrace();

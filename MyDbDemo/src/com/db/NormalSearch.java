@@ -111,13 +111,5 @@ public class NormalSearch{
 		return index;
 	}	
 	
-	public static void main(String args[]){
-		NormalSearch ns = new NormalSearch("Computer");
-		System.out.println(ns.index);
-		for (int i=0; i<ns.index;i++)
-		{
-			System.out.println(ns.bi[i].getTitle());
-			//System.out.println(as.al.get(i));
-		}
-	}
+
 }

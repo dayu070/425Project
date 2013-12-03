@@ -38,7 +38,7 @@ public class AdvancedSearchFrame extends JFrame implements ActionListener {
 		this.add(btReturn);
 		this.setSize(540,180);
 		GUIUtil.toCenter(this);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setVisible(true);
 		btSearch.addActionListener(this);

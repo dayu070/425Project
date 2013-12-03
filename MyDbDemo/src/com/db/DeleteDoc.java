@@ -40,16 +40,21 @@ public class DeleteDoc extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		if(e.getSource() == btSearch)
 		{			
-			administration ad = new administration(tfWords.getText());
+			try{
+				administration ad = new administration(tfWords.getText());
+			
 			ad.deleting();			
+		}catch(Exception exc)
+		{
+			JOptionPane.showMessageDialog(this, "Fail!");
 		}
+		JOptionPane.showMessageDialog(this, "Delete successfully!");
+			}
 		else
 		{
 			this.dispose();
 			new LibraryActionFrame(user);
 		}
 	}	
-	public static void main(String args[]){
-		new SearchFrame("Richard");
-	}
+
 }

@@ -17,10 +17,10 @@ public class journal {
 		try
 		{	Connection conn = DBConnection.GetConnection();
 		Statement stmt = conn.createStatement();
-			stmt.executeQuery("INSERT INTO LIBRARY_CATEGORY "
-							+ "VALUE('"+ item_id+"','"+publisher+"','"+editor+"','"+title+"','"+classification+"','"+position+"' ");
-			stmt.executeQuery("INSERT INTO MANAZINE "
-							+ "VALUE('" + item_id +"','"+keyword+"',"+journal_date);	
+		stmt.executeQuery("INSERT INTO LIBRARY_CATEGORY VALUES('" + item_id + "','" + publisher + "','" + editor + "','" + title+ "','" + classification + "','" + position + "')");
+//			stmt.executeQuery("INSERT INTO AUTHOR"
+//					+ "VALUE('"+ item_id+"','"+first+"','"+ middle +"','"+last+"' ");
+		stmt.executeQuery("INSERT INTO JOURNAL VALUES('" + item_id + "',TO_DATE('" + journal_date + "','YYYY-MM-DD HH24:MI:SS'))");
 		}catch (SQLException e)
 		{
 			e.printStackTrace();

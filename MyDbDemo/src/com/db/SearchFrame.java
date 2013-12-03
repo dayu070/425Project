@@ -29,7 +29,7 @@ public class SearchFrame extends JFrame implements ActionListener {
 		this.add(btAdSearch);
 		this.setSize(400, 150);
 		GUIUtil.toCenter(this);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setVisible(true);
 		btSearch.addActionListener(this);
@@ -50,8 +50,6 @@ public class SearchFrame extends JFrame implements ActionListener {
 		}
 	}
 	
-	public static void main(String args[]){
-		new SearchFrame("Richard");
-	}
+
 
 }

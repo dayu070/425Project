@@ -8,16 +8,16 @@ public class book {
 
 		
 	}
-	public void adding(String item_id, String publisher, String editor, String title, String classification, String position, String edition, String keyword,String book_year){
+	public void adding(String item_id, String publisher, String editor, String title, String classification, String position, String first, String middle, String last, String edition, String keyword,String book_year){
 		try
 		
 		{
 			Connection conn = DBConnection.GetConnection();
 			Statement stmt = conn.createStatement();
-			stmt.executeQuery("INSERT INTO LIBRARY_CATEGORY"
-							+ "VALUE('"+ item_id+"','"+publisher+"','"+editor+"','"+title+"','"+classification+"','"+position+"'");
-			stmt.executeQuery("INSERT INTO BOOK"
-							+ "VALUE('" + item_id +"',"+edition+",'"+keyword+"',"+book_year);	
+			stmt.executeQuery("INSERT INTO LIBRARY_CATEGORY "
+					+ "VALUES('" + item_id + "','" + publisher + "','" + editor + "','" + title + "','" + classification + "','" + position + "')");
+			stmt.executeQuery("INSERT INTO AUTHOR VALUES('" + item_id + "','" + first + "','" + middle + "','" + last +"')");
+			stmt.executeQuery("INSERT INTO BOOK VALUES('" + item_id + "'," + edition + ",'" + keyword + "'," + book_year + ")");	
 		}catch (SQLException e)
 		{
 			e.printStackTrace();

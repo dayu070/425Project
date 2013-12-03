@@ -46,7 +46,7 @@ public class DBConnection {
 		}
 	}
 	
-	public static void main(String args[]) throws ClassNotFoundException {
+	/*public static void main(String args[]) throws ClassNotFoundException {
 		Connection conn = GetConnection();
 		try
 		{
@@ -65,5 +65,5 @@ public class DBConnection {
 		catch (SQLException sqle) { 
 			System.out.println("SQLException : " + sqle);// handle exceptions	
 		}
-	}
+	}*/
 }
